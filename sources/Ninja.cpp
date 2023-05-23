@@ -27,6 +27,18 @@ namespace ariel
 
     void Ninja::slash(Character *enemy)
     {
+        if (!this->isAlive())
+        {
+            throw runtime_error("the attacker is dead");
+        }
+        if (!enemy->isAlive())
+        {
+            throw runtime_error("the enemy is dead");
+        }
+        if (this == enemy)
+        {
+            throw runtime_error("can't attack himself");
+        }
         if (this->isAlive() && (this->distance(enemy) <= 1))
         {
             enemy->hit(40);

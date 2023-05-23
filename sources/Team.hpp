@@ -15,15 +15,20 @@ namespace ariel
 {
     class Team
     {
-    private:
-        vector<Character *> _group;
+    protected:
+        vector<Cowboy *> cowboys;
+        vector<Ninja *> ninjas;
+        vector<Character*> group;
+        Character *leader;
     public:
         Team(Character *leader);
-        virtual ~Team();
-        void add(Character *member);
-        void attack(Team *enemy);
-        int stillAlive();
-        void print();
+        Team();
+        ~Team();
+        virtual void add(Character *member);
+        virtual void attack(Team *);
+        virtual int stillAlive() const;
+        virtual void print();
+        Character *findClosest(Character *leader, vector<Character*> &) const;
     };
 };
 

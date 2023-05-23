@@ -13,7 +13,7 @@ namespace ariel
     public:
         Cowboy(string name, Point pos);
         void shoot(Character *enemy);
-        bool hasboolets();
+        bool hasboolets() const;
         void reload();
         int getAmmo();
     };

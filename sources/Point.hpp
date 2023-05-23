@@ -14,9 +14,9 @@ namespace ariel
         public:
             Point(double , double );
             Point();
-            double distance(Point &other);
+            double distance(const Point &other) const;
             void print();
-            Point moveTowards(Point , Point, double );
+            static Point moveTowards(const Point&, const Point&, double );
             double getX() const;
             double getY() const;
             friend bool operator==(const Point &, const Point &);

@@ -17,7 +17,7 @@ namespace ariel
         this->_y = 0;
     }
 
-    double Point::distance(Point &other)
+    double Point::distance(const Point &other) const
     {
         double dis = pow((this->_x - other._x), 2) + pow((this->_y - other._y), 2);
         return sqrt(abs(dis));
@@ -28,8 +28,12 @@ namespace ariel
         cout << "(" << this->_x << "," << this->_y << ")";
     }
 
-    Point Point::moveTowards(Point src, Point dst, double dis)
+    Point Point::moveTowards(const Point &src, const Point &dst, double dis)
     {
+        if (dis < 0)
+        {
+            throw invalid_argument("the distance can't be negative");
+        }
         double dis_SRC_to_DST = src.distance(dst);
         if (dis_SRC_to_DST <= dis)
         {
