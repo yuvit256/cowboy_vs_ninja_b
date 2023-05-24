@@ -12,9 +12,7 @@ namespace ariel
         Team2(Character *);
         Team2();
         ~Team2();
-        int stillAlive();
         void print();
-        void add(Character *);
     private:
         vector<Character *> _group;
         Character *_leader;

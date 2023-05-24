@@ -1,11 +1,13 @@
 #include "Team.hpp"
 #include <typeinfo>
 #include <limits>
+#include "Team2.hpp"
+
 using namespace std;
 
 namespace ariel
 {
-    Team::Team(Character *leader) : leader(leader)
+    Team::Team(Character *leader)
     {
         if (leader == nullptr)
         {
@@ -24,6 +26,7 @@ namespace ariel
             ninjas.push_back(ninja);
         }
         this->group.push_back(leader);
+        this->leader = leader;
         leader->setInTeam(true);
     }
 
@@ -34,7 +37,7 @@ namespace ariel
     int Team::stillAlive() const
     {
         int live = 0;
-        for (Character *member : this->group)
+        for (auto member : this->group)
         {
             if (member->isAlive())
             {
@@ -54,6 +57,9 @@ namespace ariel
         {
             delete member;
         }
+        this->group.clear();
+        this->cowboys.clear();
+        this->ninjas.clear();
     }
 
     void Team::add(Character *member)
@@ -76,8 +82,8 @@ namespace ariel
             {
                 ninjas.push_back(ninja);
             }
-            member->setInTeam(true);
             this->group.push_back(member);
+            member->setInTeam(true);
         }
         else
         {
@@ -119,7 +125,7 @@ namespace ariel
             this->leader = findClosest(this->leader, this->group);
         }
         Character *victim = findClosest(this->leader, enemy->group);
-        for (Cowboy *cowboy : this->cowboys)
+        for (auto cowboy : this->cowboys)
         {
             if (cowboy->isAlive())
             {
@@ -141,7 +147,7 @@ namespace ariel
                 }
             }
         }
-        for (Ninja *ninja : this->ninjas)
+        for (auto ninja : this->ninjas)
         {
             if (ninja->isAlive())
             {

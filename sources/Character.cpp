@@ -21,9 +21,13 @@ namespace ariel
         this->_name = "Yuval";
     }
 
-    bool Character::isAlive() 
+    bool Character::isAlive()
     {
-        return this->_hp > 0;
+        if (this->_hp > 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     double Character::distance(Character *other) const
